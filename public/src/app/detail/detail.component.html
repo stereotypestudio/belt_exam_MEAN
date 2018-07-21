@@ -1,0 +1,18 @@
+<h3>Details for {{curPet.name}}</h3>
+
+<p>Type: {{curPet.type}}</p>
+
+<p>Type: {{curPet.description}}</p>
+
+<p [(ngModel)] = "likes">Like: {{likes}}</p>
+
+<p>Skills</p>
+<p *ngFor = "let skill of skills">
+	{{skill.skill}}
+</p>
+
+<button (click) = "likePet(curPet._id, curPet)" [disabled] = "liked">Like this pet</button>
+
+<button (click) = "adoptPet(curPet._id)">Adopt this pet</button>
+
+<button [routerLink] = "['/']" >Home</button>

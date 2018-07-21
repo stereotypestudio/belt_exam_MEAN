@@ -1,0 +1,40 @@
+
+<form #newForm = "ngForm" (submit) = "addPet(newPet)">
+	<h4>Add a pet:</h4>
+	<div class="card-panel red white-text" *ngIf = "errors">{{errors}}</div>
+	<div *ngIf="name.invalid && (name.dirty || name.touched)" class="card-panel red white-text">
+	  <div *ngIf="name.errors.required">
+	    Name is required.
+	  </div>
+	  <div *ngIf="name.errors.minlength">
+	    Name must be at least 3 characters long.
+	  </div>
+	</div>
+	<div *ngIf="type.invalid && (type.dirty || type.touched)" class="card-panel red white-text">
+	  <div *ngIf="type.errors.required">
+	    Type is required.
+	  </div>
+	  <div *ngIf="type.errors.minlength">
+	    Type must be at least 3 characters long.
+	  </div>
+	</div>
+	<div *ngIf="description.invalid && (description.dirty || description.touched)" class="card-panel red white-text">
+	  <div *ngIf="description.errors.required">
+	    Description is required.
+	  </div>
+	  <div *ngIf="description.errors.minlength">
+	    Description must be at least 3 characters long.
+	  </div>
+	</div>
+
+
+	<input type="text" name="newPet.name" minlength="3" required [(ngModel)] = "newPet.name" #name="ngModel" placeholder="Name">
+	<input type="text" name="newPet.type" minlength="3" required [(ngModel)] = "newPet.type" #type="ngModel" placeholder="Type">
+	<input type="text" name="newPet.description" minlength="3" required [(ngModel)] = "newPet.description" #description="ngModel" placeholder="Description">
+	<p>Skills: (Optional)</p>
+	<input type="text" name="skill1" minlength="3"  [(ngModel)] = "skill1" #skills1="ngModel">
+	<input type="text" name="skill2" minlength="3"  [(ngModel)] = "skill2" #skills2="ngModel">
+	<input type="text" name="skill3" minlength="3"  [(ngModel)] = "skill3" #skills3="ngModel">
+	<button class="waves-effect waves-light btn-large" type="submit" [disabled] = "newForm.form.invalid"><i class="material-icons left">pets</i>Add Pet</button>
+	<button class="waves-effect waves-light btn-large red" [routerLink] = "['/']">Cancel</button>
+</form>
